@@ -14,7 +14,7 @@ git merge laptop-taff master
 git push origin laptop-taff 
 
 ####################################
-# Ajout dans Laptop taff
+# Ajout dans une branche
 # aller dans la branche laptop taff
 git checkout laptop-taff 
 
@@ -23,16 +23,6 @@ git add lesfichiers
 git commit -m "commentaire"
 git push origin laptop-taff
 
-
-####################################
-# Ajout dans Laptop perso
-# aller dans la branche laptop taff
-git checkout laptop-perso
-
-# modifications des fichiers..
-git add lesfichiers
-git commit -m "commentaire"
-git push origin laptop-perso
 
 
 ####################################
@@ -51,3 +41,9 @@ git checkout laptop-perso
 git add lesfichiers
 git commit -m "commentaire"
 git push origin laptop-perso
+
+####################################
+# astuces 
+
+# récupérer un fichier supprimé :
+git checkout HEAD^ lefichier
