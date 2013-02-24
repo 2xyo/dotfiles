@@ -8,7 +8,11 @@ git add lesfichiers
 git commit -m "commentaire"
 git push origin master
 
-# Merge dans les autres branches
+# Merge dans les autres branches 
+# sur les autres postes :
+# git checkout  master
+# git pull origin master
+
 git checkout laptop-taff 
 git merge laptop-taff master
 git push origin laptop-taff 
