@@ -3,7 +3,6 @@
 .aptitude
 .bash_history
 .bash_logout
-.bashrc
 .cache
 .compiz
 .config
@@ -51,6 +50,7 @@
 .purple
 .putty
 .pylint.d
+.pyhistory
 .recently-used
 .shutter
 .Skype
