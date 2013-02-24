@@ -6,8 +6,8 @@ Red="\033[0;31m"
 Yellow="\033[0;33m"
 
 # Chars
-RootPrompt="\#"
-NonRootPrompt="\$"
+RootPrompt="\#\n"
+NonRootPrompt="\$\n"
 
 # Contextual prompt
 prompt() {
@@ -22,28 +22,55 @@ prompt() {
 
 	# Change the dynamic prompt
 	#LEFTPROMPT="$Yellow$CURRENTPATH"
-	LEFTPROMPT="\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\]\w"
+	LEFTPROMPT="\[$Yellow\][\!][`date +"%Hh%Mm%Ss"`]\[$Cyan\]$USERNAME@$HOSTNAME":"\[$Yellow\] \w"
 
+	## GIT
 	GITSTATUS=$(git status 2> /dev/null)
 	if [ $? -eq 0 ]; then
-		echo $GITSTATUS | grep "not staged" > /dev/null 2>&1
-		if [ $? -eq 0 ]; then
-			LEFTPROMPT=$LEFTPROMPT"\[$Red\]"
-		else
-			LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
+		#check igored directory
+		GITSTATUS=$(git clean -xnd `pwd` | grep 'Would remove \./'> /dev/null)
+		if [ $? -eq 1 ]; then
+		    echo $GITSTATUS | grep "not staged" > /dev/null 2>&1
+			if [ $? -eq 0 ]; then
+				LEFTPROMPT=$LEFTPROMPT"\[$Red\]"
+			else
+				LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
+			fi
+			# BRANCH=`git describe --contains --all HEAD`
+			BRANCH=`git rev-parse --abbrev-ref HEAD`
+			LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
 		fi
-		# BRANCH=`git describe --contains --all HEAD`
-		BRANCH=`git rev-parse --abbrev-ref HEAD`
-		LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
 	fi
 
+
+
+	## SVN
+	RIGHTPROMPT=""
+	let RIGHTSIZE=0
+	if [ -d ".svn" ]; then
+		SVNSTATUS=$(svn status 2>&1)
+		echo $SVNSTATUS | grep 'not a working copy' 2>&1 > /dev/null
+		if [ $? -eq 1 ]; then
+			echo $SVNSTATUS | grep -P '^\s*[AMDCR]' 2>&1 > /dev/null
+			if [ $? -eq 0 ]; then
+				LEFTPROMPT=$LEFTPROMPT"\[$Red\]"
+			else
+				LEFTPROMPT=$LEFTPROMPT"\[$Green\]"
+			fi
+			BRANCH=$(svn info | grep 'Repository Root' | sed -r 's|^.*/([a-z]+)$|\1|')
+			LEFTPROMPT=$LEFTPROMPT" ["$BRANCH"]"
+			#RIGHTPROMPT=$RIGHTPROMPT"[SVN Repository $BRANCH]"
+			#let RIGHTSIZE=$(echo -n "[SVN Repository $BRANCH]" | wc -c)
+		fi
+	fi
+	# echo -e -n $LEFTPROMPT
+
+	#USER / ROOT
 	if [ $EUID -ne 0 ]; then
-		PS1=$LEFTPROMPT"\[$NoColor\] "$NonRootPrompt" "
+		PS1=$LEFTPROMPT"\[$NoColor\] "$NonRootPrompt""
 	else
-		PS1=$LEFTPROMPT"\[$NoColor\] "$RootPrompt" "
-	fi
-
-	# echo -e -n $LEFTPROMPT	
+		PS1=$LEFTPROMPT"\[$NoColor\] "$RootPrompt""
+	fi	
 }
 
 # Define PROMPT_COMMAND if not already defined (fix: Modifying title on SSH connections)
@@ -66,3 +93,4 @@ if [ $EUID -ne 0 ]; then
 else
 	PS1=$RootPrompt" "
 fi
+
