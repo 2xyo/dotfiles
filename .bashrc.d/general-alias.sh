@@ -7,11 +7,19 @@ alias ll='ls -lF'
 alias la='ls -alF'
 alias ll='ls -lF'
 alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
 
-alias alert_helper='history|tail -n1|sed -e "s/^\s*[0-9]\+\s*//" -e "s/;\s*alert$//"'
+alias cqt='cat'
+alias qptitude='aptitude'
+
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
 
 
+alias ap='sudo aptitude update && sudo aptitude -y full-upgrade && sudo aptitude autoclean ; alert "Upgrade Done"'
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -74,13 +82,3 @@ extract () {
  
 # ça date de http://sametmax.com/decompresser-sous-linux-en-ligne-de-commande/
  
-# et quelques alias pour des tâches de tous les jours
- 
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
-
-alias cqt='cat'
-alias qptitude='aptitude'
