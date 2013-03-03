@@ -81,3 +81,6 @@ alias ...='cd ../../'
 alias ....='cd ../../../'
 alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
+
+alias cqt='cat'
+alias qptitude='aptitude'
