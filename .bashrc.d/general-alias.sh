@@ -54,7 +54,7 @@ alias co=commit;
 # ca c'est un truc de feignasse car je me souviens jamais comment extraire 
 # en ligne de commande tel ou tel format
  
-extract () {
+function extract () {
     if [ -f $1 ]
     then
         case $1 in
@@ -76,9 +76,24 @@ extract () {
         esac
     else
         echo "Error: '$1' is not a valid file!"
-        exit 0
     fi
 }
- 
+alias extract=extract;
+
 # ça date de http://sametmax.com/decompresser-sous-linux-en-ligne-de-commande/
- 
+
+# lecture colorée de logs
+logview()
+{
+        ccze -A < $1 | most
+}
+
+# lecture colorée de logs en directfunction logview()
+logtail()
+{
+    tail -f $1 | ccze
+}
+
+
+alias notebook="cd ; mkdir -p .notebook; cd .notebook; ipython notebook --script --pylab inline"
+
