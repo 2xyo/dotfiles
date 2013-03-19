@@ -81,4 +81,15 @@ function extract () {
 alias extract=extract;
 
 # ça date de http://sametmax.com/decompresser-sous-linux-en-ligne-de-commande/
- 
+
+# lecture colorée de logs
+logview()
+{
+        ccze -A < $1 | most
+}
+
+# lecture colorée de logs en directfunction logview()
+logtail()
+{
+    tail -f $1 | ccze
+}
