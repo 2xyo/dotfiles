@@ -93,3 +93,7 @@ logtail()
 {
     tail -f $1 | ccze
 }
+
+
+alias notebook="cd; ipython notebook --script --pylab inline"
+
