@@ -95,5 +95,5 @@ logtail()
 }
 
 
-alias notebook="cd; ipython notebook --script --pylab inline"
+alias notebook="cd ; mkdir -p .notebook; cd .notebook; ipython notebook --script --pylab inline"
 
