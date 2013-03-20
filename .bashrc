@@ -62,3 +62,8 @@ done
 if [ -f ~/.pythonrc ]; then
         export PYTHONSTARTUP=~/.pythonrc
 fi
+
+# virtualenv wrapper
+export WORKON_HOME=~/.virtualenvs
+mkdir -p $WORKON_HOME
+source ~/.local/bin/virtualenvwrapper.sh
