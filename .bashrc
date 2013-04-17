@@ -63,6 +63,10 @@ if [ -f ~/.pythonrc ]; then
         export PYTHONSTARTUP=~/.pythonrc
 fi
 
+export PATH=$PATH:~/Tools/casperjs/bin
+export PATH=$PATH:~/Tools/phantomjs-1.9.0-linux-i686/bin
+
+
 # virtualenv wrapper
 export WORKON_HOME=~/.virtualenvs
 mkdir -p $WORKON_HOME
