@@ -63,8 +63,8 @@ if [ -f ~/.pythonrc ]; then
         export PYTHONSTARTUP=~/.pythonrc
 fi
 
-# Add bin to PATH
-if [ -d ~/bin ]; then 
-   PATH=~/bin/:$PATH
-   export PATH
-fi
+
+# virtualenv wrapper
+export WORKON_HOME=~/.virtualenvs
+mkdir -p $WORKON_HOME
+source ~/.local/bin/virtualenvwrapper.sh
