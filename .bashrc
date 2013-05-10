@@ -64,11 +64,12 @@ if [ -f ~/.pythonrc ]; then
 fi
 
 
-
 # virtualenv wrapper
 export WORKON_HOME=~/.virtualenvs
 mkdir -p $WORKON_HOME
-source ~/.local/bin/virtualenvwrapper.sh
+export PROJECT_HOME=$HOME/Projets
+#source ~/.local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 
 # Load personnal config
