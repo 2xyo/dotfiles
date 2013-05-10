@@ -63,8 +63,3 @@ if [ -f ~/.pythonrc ]; then
         export PYTHONSTARTUP=~/.pythonrc
 fi
 
-# Add bin to PATH
-if [ -d ~/bin ]; then 
-   PATH=~/bin/:$PATH
-   export PATH
-fi
