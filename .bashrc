@@ -52,11 +52,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-for  i in ~/.bashrc.d/*.sh
-do
-    . $i
-done
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
 
 # Add PYTHONSTARTUP
 if [ -f ~/.pythonrc ]; then
@@ -68,3 +68,11 @@ fi
 export WORKON_HOME=~/.virtualenvs
 mkdir -p $WORKON_HOME
 source ~/.local/bin/virtualenvwrapper.sh
+
+
+# Load personnal config
+for  i in ~/.bashrc.d/*.sh
+do
+    . $i
+done
+
