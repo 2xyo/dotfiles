@@ -64,6 +64,7 @@ if [ -f ~/.pythonrc ]; then
 fi
 
 
+
 # virtualenv wrapper
 export WORKON_HOME=~/.virtualenvs
 mkdir -p $WORKON_HOME
@@ -75,4 +76,3 @@ for  i in ~/.bashrc.d/*.sh
 do
     . $i
 done
-
