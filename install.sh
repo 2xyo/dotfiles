@@ -47,7 +47,7 @@ installBash()
 {
 	installOrUpdateSubtree bash-it common/bash/bash-it  https://github.com/revans/bash-it.git 
 	linkCommonFile bash/bash-it .bash_it
-	echo "N/none/none/none"
+	cp --remove-destination `readlink ~/.bash_profile` ~/.bash_profile
 	$HOME/.bash_it/install.sh
 	linkCommonFile bash/custom/bash_profile .bash_profile
 	linkCommonFile bash/custom/bashrc .bashrc
