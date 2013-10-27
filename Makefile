@@ -4,16 +4,30 @@ DOTFILES := $(shell pwd)
 
 
 
-install: config-git update
+install: install-zsh
 
 config-git:
 	sudo chmod +x /usr/share/doc/git/contrib/subtree/git-subtree.sh
-	sudo ln -s /usr/share/doc/git/contrib/subtree/git-subtree.sh /usr/lib/git-core/git-subtree
+	sudo ln -fs /usr/share/doc/git/contrib/subtree/git-subtree.sh /usr/lib/git-core/git-subtree
 
 update: update-subtree
 
 update-subtree: update-bash update-zsh update-vim
 
+
+install-bash:
+	git remote add -f bash-it https://github.com/revans/bash-it.git
+	git subtree add --prefix common/bash/bash-it bash-it master --squash
+
+
+install-zsh:
+	git remote add -f oh-my-zsh https://github.com/robbyrussell/oh-my-zsh.git
+	git subtree add --prefix common/zsh/oh-my-zsh oh-my-zsh master --squash
+
+
+install-vim:
+	git remote add -f bash-it https://github.com/revans/bash-it.git
+	git subtree add --prefix common/bash/bash-it bash-it master --squash
 
 install-git:
 	ln -fs $(DOTFILES)/common/git/gitconfig ${HOME}/.gitconfig
