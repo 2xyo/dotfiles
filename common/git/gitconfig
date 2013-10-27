@@ -1,0 +1,8 @@
+[user]
+	email = yohann@lepage.info
+	name = Yohann Lepage
+[core]
+	editor = vim
+[color]
+	ui = true
+	

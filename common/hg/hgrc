@@ -1,0 +1,5 @@
+[ui]
+username = Yohann Lepage <yohann@lepage.info>
+
+[extensions]
+rebase = 

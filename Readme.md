@@ -1,4 +1,53 @@
-Processus de gestion des dotfiles
+# Dotfiles
+
+
+## Installation
+ 
+```
+cd projects
+git clone git@bitbucket.org:2xyo/dotfiles.git
+cd dotfiles
+make install common
+make install computer-name
+```
+
+## Update 
+```
+cd projects/dotfiles
+make update
+make install common
+make install computer-name
+```
+## Commonn
+
+```
+
+```
+
+## Bash
+
+## Zsh
+
+## Vim
+
+## Python
+
+## gdb
+
+
+## Add subtree
+
+Example:
+```
+# Add
+git remote add -f bash-it https://github.com/revans/bash-it.git
+git subtree add --prefix common/bash/bash-it bash-it master --squash
+
+# update
+
+git fetch bash-it master
+git subtree pull --prefix common/bash/bash-it bash-it master --squash
+```
 
 
 # Modif dans branche commune
