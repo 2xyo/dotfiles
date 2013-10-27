@@ -50,6 +50,7 @@ installBash()
 	echo "N/none/none/none"
 	$HOME/.bash_it/install.sh
 	linkCommonFile bash/custom/bash_profile .bash_profile
+	linkCommonFile bash/custom/bashrc .bashrc
 }
 
 installZsh()
@@ -88,10 +89,16 @@ installGdb()
 	linkCommonFile gdb/Gdbinit/gdbinit .gdbinit
 }
 
-#installBash
-#installZsh
-#installVim
-installGdb
+installEnv()
+{
+	linkCommonFile env/env .env
+	linkCommonFile env/profile .profile
+}
 
+installBash
+installZsh
+#installVim
+#installGdb
+installEnv
 
 echo "chsh -s $(which bash) or $(which zsh)"

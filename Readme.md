@@ -23,8 +23,40 @@ make install computer-name
 ```
 
 ```
+# Profile Bash 
+
+```
+
+# interactive login shell, or as a non-interactive shell with the --login 
+# login at the console (Ctrl+Alt+F1..F6), or connecting via ssh.
+
+source /etc/profile
+source  ~/.bash_profile
+-> source ~/.env
+-> source $BASH_IT/bash_it.sh
+
+
+# interactive shell that is not a login shell is started
+source  /etc/bash.bashrc 
+source ~/.bashrc
+-> source  ~/.bash_profile
+--> source ~/.env
+---> source $BASH_IT/bash_it.sh
+
+```
+
+
+# Profile Zsh
+```
+
+```
+
 
 ## Bash
+
+Read /etc/profile
+
+
 
 ## Zsh
 

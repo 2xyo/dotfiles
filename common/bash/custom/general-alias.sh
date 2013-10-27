@@ -1,20 +1,4 @@
-##############################################################################
-# qzerty / qwerty
-alias qptitude='aptitude'
 
-alias la='ls -alF'
-alias ll='ls -lF'
-alias la='ls -alF'
-alias ll='ls -lF'
-alias l='ls -CF'
-alias ..='cd ..'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
-
-alias cqt='cat'
-alias qptitude='aptitude'
 
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "[0] "'
 
