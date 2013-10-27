@@ -1,15 +1,19 @@
 #/usr/bin/env bash
 
-source ~/.env
+
 
 BASH=$(which bash)
 ZSH=$(which zsh)
-
 USERSHELL=$(getent passwd $LOGNAME | cut -d: -f7)
 
-if [[ "$USERSHELL" == "/usr/bin/zsh" ]]
+
+$BASH ~/.env
+
+
+
+if [ "$USERSHELL" == "/usr/bin/zsh" ]
 then
-	source ~/.zshrc
+	$ZSH ~/.zshrc
 else
-	source ~/.bash_profile
+	$BASH ~/.bash_profile
 fi

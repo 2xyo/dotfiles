@@ -1,6 +1,6 @@
 
 # shell already loaded
-[[ $SHELL_LOADED  == true ]] && return
+[[ $SHELL_LOADED  == true ]] && exit 0
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh

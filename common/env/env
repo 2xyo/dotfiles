@@ -1,7 +1,7 @@
 #/usr/bin/env bash
 
 # env already loaded
-[[  $ENV_LOADED  == true ]] && return
+[[  $ENV_LOADED  == true ]] && exit 0
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -45,7 +45,7 @@ if [ -d "$HOME/.virtualenvs" ] ; then
     export WORKON_HOME=~/.virtualenvs
     
     if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-		. /usr/local/bin/virtualenvwrapper.sh
+		bash /usr/local/bin/virtualenvwrapper.sh
     fi
 
     # The variable PROJECT_HOME tells virtualenvwrapper where to place your project working directories. 
