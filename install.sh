@@ -29,7 +29,7 @@ installSubtree()
 	
 	if [ ! -d "$2" ]
 	then
-		git subtree add --prefix $2 $1 --squash
+		git subtree add --prefix $2 $1 master --squash
 	else
 		echo "$2 already exist"
 	fi
@@ -42,7 +42,7 @@ installSubtree()
 
 
 
-installSubtree bash-it common/bash/bash-it  https://github.com/revans/bash-it.git
+installSubtree bash-it common/bash/bash-it  https://github.com/revans/bash-it.git 
 installSubtree oh-my-zsh common/zsh/oh-my-zsh https://github.com/robbyrussell/oh-my-zsh.git 
 installSubtree vim-pathogen common/vim/plugins/vim-pathogen https://github.com/tpope/vim-pathogen.git
 
