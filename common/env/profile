@@ -11,7 +11,7 @@ $BASH ~/.env
 
 
 
-if [ "$USERSHELL" == "/usr/bin/zsh" ]
+if [  "$USERSHELL" = "/usr/bin/zsh"  ]
 then
 	$ZSH ~/.zshrc
 else
