@@ -1,0 +1,58 @@
+set nocompatible
+
+" Pathogen
+call pathogen#infect()
+call pathogen#helptags()
+ 
+set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
+filetype plugin indent on
+ 
+syntax on
+set number
+set hlsearch
+set showmatch
+set incsearch
+set ignorecase
+set nowrap
+set autoindent
+set history=1000
+set cursorline
+if has("unnamedplus")
+  set clipboard=unnamedplus
+elseif has("clipboard")
+  set clipboard=unnamed
+endif
+
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+set autochdir
+" Nerdtree
+autocmd vimenter * NERDTree
+" nerdtree auto focus to file when opened in new tab
+" http://stackoverflow.com/questions/4277808/nerdtree-auto-focus-to-file-when-opened-in-new-tab
+autocmd VimEnter * wincmd p
+
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc','\~$','\.swo$','\.swp$','\.git','\.hg','\.svn','\.bzr']
+let NERDTreeKeepTreeInNewTab=1
+let g:nerdtree_tabs_open_on_gui_startup=0
+
+" http://stackoverflow.com/questions/5817730/changing-root-in-nerdtree
+
+
+" Quit when where is no active buffer
+" https://github.com/scrooloose/nerdtree/issues/21
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif 
+
+
+
+set background=dark
+
+"colorscheme wombat
