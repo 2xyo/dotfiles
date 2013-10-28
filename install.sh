@@ -1,4 +1,4 @@
-#/usr/bin/env sh
+#/usr/bin/env check
 #set -x
 
 contains()
@@ -13,6 +13,29 @@ contains()
     fi
 }
 
+checkSubtree ()
+{
+	GIT=$(which git)
+	$GIT subtree > /dev/null 2>&1 
+
+	if [  $? -eq 1  ]; then
+		cat <<'EOF'
+Install or activate git subtree
+sudo chmod +x /usr/share/doc/git/contrib/subtree/git-subtree.sh
+sudo ln -s /usr/share/doc/git/contrib/subtree/git-subtree.sh /usr/lib/git-core/git-subtree
+
+Or:
+
+git clone https://github.com/git/git.git
+cd git/contrib/subtree
+make
+sudo install -m 755 git-subtree /usr/lib/git-core"
+
+EOF
+
+		exit 1
+	fi
+}
 
 installOrUpdateSubtree()
 {
@@ -109,15 +132,16 @@ installEnv()
 	linkCommonFile env/profile .profile
 }
 
-installEnv
+checkSubtree
+# installEnv
 
-installBash
-installZsh
+# installBash
+# installZsh
 
-installVim
-installGdb
-installHg
-installGit
-installPython
+# installVim
+# installGdb
+# installHg
+# installGit
+# installPython
 
 echo "chsh -s $(which zsh)"
