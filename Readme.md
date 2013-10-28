@@ -9,9 +9,7 @@ git clone git@bitbucket.org:2xyo/dotfiles.git
 cd dotfiles
 
 git remote add origin ssh://git@bitbucket.org/2xyo/dotfiles.git
-git pull origin master
-cd dotfiles
-git branch <computer-name>
+git checkout <computer-name>
 ./install.sh
 
 ```
