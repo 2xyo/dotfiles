@@ -9,6 +9,10 @@
 export PAGER=`which most`
 export PAGER=${PAGER:-less}
 
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+export HISTCONTROL=ignoreboth
+shopt -s histappend
 
 # change default editor
 

@@ -21,6 +21,13 @@ alias cqt='cat'
 
 alias ap='sudo aptitude update && sudo aptitude -y full-upgrade && sudo aptitude autoclean ; alert "Upgrade Done"'
 
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+
 
 extract () {
     if [ -f $1 ]
