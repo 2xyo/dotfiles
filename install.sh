@@ -47,6 +47,7 @@ linkCommonFile()
 
 installBash()
 {
+	echo "> Install BASH"
 	installOrUpdateSubtree bash-it common/bash/bash-it  https://github.com/revans/bash-it.git 
 	linkCommonFile bash/bash-it .bash_it
 	cp --remove-destination `readlink ~/.bash_profile` ~/.bash_profile
@@ -58,6 +59,7 @@ installBash()
 
 installZsh()
 {
+	echo "> Install ZSH"
 	installOrUpdateSubtree oh-my-zsh common/zsh/oh-my-zsh https://github.com/robbyrussell/oh-my-zsh.git
 	linkCommonFile zsh/oh-my-zsh .oh-my-zsh
 	linkCommonFile zsh/custom/zshrc .zshrc
@@ -65,6 +67,7 @@ installZsh()
 
 installVim()
 {	
+	echo "> Install VIM"
 	installOrUpdateSubtree vim-pathogen common/vim/plugins/vim-pathogen https://github.com/tpope/vim-pathogen.git
 	mkdir -p ~/.vim/autoload ~/.vim/bundle
 	linkCommonFile vim/plugins/vim-pathogen/autoload/pathogen.vim .vim/autoload/pathogen.vim
@@ -73,27 +76,32 @@ installVim()
 
 installPython()
 {
+	echo "> Install Python"
 	linkCommonFile python/pythonrc .pythonrc
 }
 
 installGit()
 {
+	echo "> Install GIT"
 	linkCommonFile git/gitconfig .gitconfig
 }
 
 installHg()
 {
+	echo "> Install HG"
 	linkCommonFile hg/hgrc .hgrc
 }
 
 installGdb()
 {
+	echo "> Install GDB"
 	installOrUpdateSubtree Gdbinit common/gdb/Gdbinit https://github.com/gdbinit/Gdbinit.git
 	linkCommonFile gdb/Gdbinit/gdbinit .gdbinit
 }
 
 installEnv()
 {
+	echo "> Install ENV"
 	mkdir -p ~/.config/dotfiles
 	linkCommonFile env/env.sh .config/dotfiles/env.sh
 	linkCommonFile env/alias.sh .config/dotfiles/alias.sh
@@ -101,10 +109,15 @@ installEnv()
 	linkCommonFile env/profile .profile
 }
 
-#installBash
-installZsh
-installVim
-installGdb
 installEnv
 
-echo "chsh -s $(which bash) or $(which zsh)"
+installBash
+installZsh
+
+installVim
+installGdb
+installHg
+installGit
+installPython
+
+echo "chsh -s $(which zsh)"
