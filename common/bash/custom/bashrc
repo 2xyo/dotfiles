@@ -1,5 +1,11 @@
+#!/usr/bin/env bash
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && exit 0
+#[ -z "$PS1" ] && exit 0
+
+
+
+
+. ~/.bash_profile
 
 
 

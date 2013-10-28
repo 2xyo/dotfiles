@@ -1,7 +1,5 @@
-#/usr/bin/env bash
-
 # env already loaded
-[[  $ENV_LOADED  == true ]] && exit 0
+[  "$ENV_LOADED"  =  true  ] && return 0
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -18,7 +16,7 @@ SB="/opt/sublime_text/sublime_text -w"
 VIM=$(which vim)
 VI=$(which vi)
 
-if [[ -z $XDG_CURRENT_DESKTOP ]]; then
+if [ -z $XDG_CURRENT_DESKTOP ]; then
     SB=/dontexist
 fi
 
@@ -27,7 +25,6 @@ do
 	if [ -f "$EDI" ]; then
 		export EDITOR="$EDI"
 		export GIT_EDITOR="$EDI"
-		echo $EDI
 		break
 	fi
 done
@@ -44,9 +41,7 @@ fi
 if [ -d "$HOME/.virtualenvs" ] ; then
     export WORKON_HOME=~/.virtualenvs
     
-    if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
-		bash /usr/local/bin/virtualenvwrapper.sh
-    fi
+
 
     # The variable PROJECT_HOME tells virtualenvwrapper where to place your project working directories. 
 	if [ -d "$HOME/projects" ] ; then
@@ -64,12 +59,18 @@ fi
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
-# Change this to your console based IRC client of choice.
 
-export IRC_CLIENT='irssi'
 
-# Set this to the command you use for todo.txt-cli
 
-export TODO="t"
+if [  -d ~/.config/dotfiles/hosts  ]; then
+    for DIR in ~/.config/dotfiles/hosts/*; do
+        if [  -d "$DIR"  ]; then
+            if test -e $DIR/env.sh; then
+                . $DIR/env.sh
+            fi
+        fi
+    done
+fi
+
 
 export ENV_LOADED=true

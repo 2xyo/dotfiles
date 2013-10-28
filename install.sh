@@ -51,6 +51,7 @@ installBash()
 	$HOME/.bash_it/install.sh
 	linkCommonFile bash/custom/bash_profile .bash_profile
 	linkCommonFile bash/custom/bashrc .bashrc
+	linkCommonFile bash/custom/inputrc .inputrc
 }
 
 installZsh()
@@ -61,7 +62,7 @@ installZsh()
 }
 
 installVim()
-{
+{	
 	installOrUpdateSubtree vim-pathogen common/vim/plugins/vim-pathogen https://github.com/tpope/vim-pathogen.git
 	mkdir -p ~/.vim/autoload ~/.vim/bundle
 	linkCommonFile vim/plugins/vim-pathogen/autoload/pathogen.vim .vim/autoload/pathogen.vim
@@ -91,12 +92,15 @@ installGdb()
 
 installEnv()
 {
-	linkCommonFile env/env .env
+	mkdir -p ~/.config/dotfiles
+	linkCommonFile env/env.sh .config/dotfiles/env.sh
+	linkCommonFile env/alias.sh .config/dotfiles/alias.sh
+	ln -fs ${PWD}/hosts ~/.config/dotfiles/hosts
 	linkCommonFile env/profile .profile
 }
 
-installBash
-installZsh
+#installBash
+#installZsh
 #installVim
 #installGdb
 installEnv
