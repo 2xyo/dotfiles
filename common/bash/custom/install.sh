@@ -18,23 +18,31 @@ echo "Copied the template .jekyllconfig into your home directory. Edit this file
 
 
 ALIASES=$(cat <<EOF
-a
-b
-c
+general
+git
+hg
+vim
 EOF
 )
 
 PLUGINS=$(cat <<EOF
-a
-b
-c
+dirs
+git
+hg
+ssh
+tmux
+tmuxinator
+python
 EOF
 )
 
 COMPLETION=$(cat <<EOF
-a
-b
-c
+bash-it
+django
+git
+git_flow
+pip
+tmux
 EOF
 )
 

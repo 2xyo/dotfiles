@@ -1,134 +1,108 @@
 # Dotfiles
 
 
-## Installation
+## Installation /update
  
 ```
-cd projects
+cd ~/projects
 git clone git@bitbucket.org:2xyo/dotfiles.git
 cd dotfiles
-make install common
-make install computer-name
-```
 
-## Update 
-```
-cd projects/dotfiles
-make update
-make install common
-make install computer-name
-```
-## Commonn
-
-```
-
-```
-# Profile Bash 
-
-```
-
-# interactive login shell, or as a non-interactive shell with the --login 
-# login at the console (Ctrl+Alt+F1..F6), or connecting via ssh.
-
-source /etc/profile
-source  ~/.bash_profile
--> source ~/.env
--> source $BASH_IT/bash_it.sh
-
-
-# interactive shell that is not a login shell is started
-source  /etc/bash.bashrc 
-source ~/.bashrc
--> source  ~/.bash_profile
---> source ~/.env
----> source $BASH_IT/bash_it.sh
+git remote add origin ssh://git@bitbucket.org/2xyo/dotfiles.git
+git pull origin master
+cd dotfiles
+git branch <computer-name>
+./install.sh
 
 ```
 
 
-# Profile Zsh
+```
+## Profiles
+
+### X session startup
+
+```
+. ~/.profile
+	. ~/.config/dotfiles/env.sh
+		~/.config/dotfiles/hosts/<branch>/env.sh
+
 ```
 
+### Interactive login shell
+
+or as a non-interactive shell with the --login  == login at the console (Ctrl+Alt+F1..F6), or connecting via ssh.
+
+```
+. /etc/profile
+.  ~/.bash_profile
+	.  $BASH_IT/bash_it.sh
+	. ~/.config/dotfiles/env.sh
+		~/.config/dotfiles/hosts/<branch>/env.sh
+	. ~/.config/dotfiles/alias.sh
+		~/.config/dotfiles/hosts/<branch>/alias.sh
+
+# OR
+.  ~/zshrc
+	. ~/.oh-my-zsh/oh-my-zsh.sh
+	. ~/.config/dotfiles/alias.sh
+		~/.config/dotfiles/hosts/<branch>/alias.sh
+
 ```
 
 
-## Bash
+### interactive shell that is not a login shell is started
 
-Read /etc/profile
-
-
-
-## Zsh
-
-## Vim
-
-## Python
-
-## gdb
-
-
-## Add subtree
-
-Example:
 ```
-# Add
-git remote add -f bash-it https://github.com/revans/bash-it.git
-git subtree add --prefix common/bash/bash-it bash-it master --squash
+.  /etc/bash.bashrc 
+.  ~/.bashrc
+	.  ~/.bash_profile
+		. ~/.bash_it/bash_it.sh
+		. ~/.config/dotfiles/env.sh
+			~/.config/dotfiles/hosts/<branch>/env.sh
+		. ~/.config/dotfiles/alias.sh
+			~/.config/dotfiles/hosts/<branch>/alias.sh
 
-# update
+# OR
 
-git fetch bash-it master
-git subtree pull --prefix common/bash/bash-it bash-it master --squash
+.  ~/zshrc
+	. ~/.oh-my-zsh/oh-my-zsh.sh
+	. ~/.config/dotfiles/alias.sh
+		~/.config/dotfiles/hosts/<branch>/alias.sh
+
 ```
 
+## Maintenance 
 
-# Modif dans branche commune
+### On common branch
+
+```
 git checkout master
-# modifications des fichiers..
-git add lesfichiers
-git commit -m "commentaire"
+# do your stuff
+git add files
+git commit -m "comment"
 git push origin master
 
-# Merge dans les autres branches 
-# sur les autres postes :
-# git checkout  master
-# git pull origin master
+# merge modif on local host
+git checkout laptop-asus 
+git merge laptop-asus master
+git push origin laptop-asus
 
-git checkout laptop-taff 
+# merge modif on remote host
+git checkout master
+git pull origin master
+git checkout laptop-taff
 git merge laptop-taff master
 git push origin laptop-taff 
 
-####################################
-# Ajout dans une branche
-# aller dans la branche laptop taff
-git checkout laptop-taff 
+```
 
-# modifications des fichiers..
-git add lesfichiers
-git commit -m "commentaire"
-git push origin laptop-taff
+### On local branch
 
-
-
-####################################
-#ajout d'un nouveau poste
-cd
-git init
-git add .bashrc
-git commit -m "base"
-git remote add origin ssh://git@bitbucket.org/2xyo/dotfiles.git
-# attention, ecrase la conf existante
-git pull origin master
-
-git branch laptop-example
-git checkout laptop-perso
-# modifications des fichiers..
-git add lesfichiers
-git commit -m "commentaire"
-git push origin laptop-perso
-
-####################################
-# astuces 
-
-# récupérer un fichier supprimé :
-git checkout HEAD^ lefichier
+```
+git checkout laptop-asus
+# do your stuff
+git add files
+git commit -m "comment"
+git push origin laptop-asus
+```

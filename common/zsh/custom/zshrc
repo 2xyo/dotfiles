@@ -33,13 +33,13 @@ COMPLETION_WAITING_DOTS="true"
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
+ 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git autojump command-not-found copydir copyfile cp extract git-flow last-working-dir mercurial pip python rsync terminator tmux)
 
 
 source $ZSH/oh-my-zsh.sh
-
+	
 . ~/.config/dotfiles/alias.sh
