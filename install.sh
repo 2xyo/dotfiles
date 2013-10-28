@@ -21,17 +21,19 @@ installOrUpdateSubtree()
 	# 3 url
 	if ! contains "$(git branch -a)" "$1"
 	then
-		echo "Add branch $1 "
+		echo ">> Add branch $1 "
 		git remote add -f $1 $3
 	else
-		echo "Fetch branch $1"
+		echo ">> Fetch branch $1"
 		git fetch $1 master
 	fi
 	
 	if [ ! -d "$2" ]
 	then
+		echo ">> subtree add $1"
 		git subtree add --prefix $2 $1 master --squash
 	else
+		echo ">> subtree pull $1"
 		git subtree pull --prefix $2 $1 master --squash
 	fi
 }
@@ -100,9 +102,9 @@ installEnv()
 }
 
 #installBash
-#installZsh
-#installVim
-#installGdb
+installZsh
+installVim
+installGdb
 installEnv
 
 echo "chsh -s $(which bash) or $(which zsh)"
