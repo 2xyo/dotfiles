@@ -14,8 +14,6 @@ git checkout <computer-name>
 
 ```
 
-
-```
 ## Profiles
 
 ### X session startup
