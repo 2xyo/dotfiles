@@ -4,11 +4,11 @@
 ## Installation /update
  
 ```
-cd ~/projects
-git clone git@bitbucket.org:2xyo/dotfiles.git
-cd dotfiles
-
+cd ~/projects/dotfiles
+git init
+git remote add public git@github.com:2xyo/dotfiles.git
 git remote add origin ssh://git@bitbucket.org/2xyo/dotfiles.git
+
 git checkout <computer-name>
 ./install.sh
 
@@ -70,6 +70,9 @@ or as a non-interactive shell with the --login  == login at the console (Ctrl+Al
 
 ## Maintenance 
 
+* branch `public/master` : public repository on github
+* branch `origin/laptop-asus` : private repository on bitbucket
+
 ### On common branch
 
 ```
@@ -77,7 +80,7 @@ git checkout master
 # do your stuff
 git add files
 git commit -m "comment"
-git push origin master
+git push public master
 
 # merge modif on local host
 git checkout laptop-asus 
@@ -86,7 +89,7 @@ git push origin laptop-asus
 
 # merge modif on remote host
 git checkout master
-git pull origin master
+git pull public master
 git checkout laptop-taff
 git merge laptop-taff master
 git push origin laptop-taff 
