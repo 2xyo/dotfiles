@@ -8,8 +8,13 @@ cd ~/projects/dotfiles
 git init
 git remote add public git@github.com:2xyo/dotfiles.git
 git remote add origin ssh://git@bitbucket.org/2xyo/dotfiles.git
+git pull public master
+git branch <computer-name>
+cp -a hosts/template hosts/<computer-name>
+git add hosts/<computer-name>
+git commit -m "Add hosts/<computer-name>
+git push origin <computer-name>
 
-git checkout <computer-name>
 ./install.sh
 
 ```
