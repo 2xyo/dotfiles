@@ -133,15 +133,15 @@ installEnv()
 }
 
 checkSubtree
-# installEnv
+installEnv
 
-# installBash
-# installZsh
+installBash
+installZsh
 
-# installVim
-# installGdb
-# installHg
-# installGit
-# installPython
+installVim
+installGdb
+installHg
+installGit
+installPython
 
 echo "chsh -s $(which zsh)"
