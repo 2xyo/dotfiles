@@ -128,6 +128,7 @@ installEnv()
 	mkdir -p ~/.config/dotfiles
 	linkCommonFile env/env.sh .config/dotfiles/env.sh
 	linkCommonFile env/alias.sh .config/dotfiles/alias.sh
+	rm -rf  ~/.config/dotfiles/hosts
 	ln -fs ${PWD}/hosts ~/.config/dotfiles/hosts
 	linkCommonFile env/profile .profile
 }
